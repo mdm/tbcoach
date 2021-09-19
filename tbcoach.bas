@@ -54,7 +54,7 @@ DECLARE SUB DrawWindow (X%, y%, w%, h%, fc%, bc%, ra%, title$)
 DECLARE SUB Center (znr%, text$)
 DECLARE SUB MainMenu ()
 ' 2006: QB.BI contains various advanced type defs, etc.
-' $INCLUDE: 'C:\QB\qb.bi'
+' $INCLUDE: 'C:\QB45\INC\qb.bi'
 
 TYPE vokabelrec
   frage AS STRING * 40
@@ -134,7 +134,7 @@ DEF SEG
 COLOR 15, 3
 Center 1, STRING$(80, " ")
 Center 25, STRING$(80, " ")
-Center 1, "Toxic Brain Coach 1.7√ü"
+Center 1, "Toxic Brain Coach 1.7·"
 LoadUser
 inreg.ax = 0
 CALL INTERRUPTX(&H33, inreg, outreg)
@@ -167,7 +167,7 @@ SUB BDatenAendern
   DIM endflag AS INTEGER, aktiv AS INTEGER, abbrkey AS INTEGER, abutton AS INTEGER
   DIM i AS INTEGER, temp1 AS STRING, temp2 AS STRING, temp3 AS STRING
   '$STATIC
-  DrawWindow 41 - INT(48 / 2), 13 - INT(14 / 2), 48, 14, 15, 1, 1, "Benutzerdaten √§ndern"
+  DrawWindow 41 - INT(48 / 2), 13 - INT(14 / 2), 48, 14, 15, 1, 1, "Benutzerdaten Ñndern"
   COLOR 15, 1
   LOCATE 8, 21
   PRINT "Benutzername:";
@@ -183,7 +183,7 @@ SUB BDatenAendern
   PRINT SPACE$(40);
   LOCATE 14, 21
   COLOR 15, 1
-  PRINT "Passwort (Best√§tigung):";
+  PRINT "Passwort (BestÑtigung):";
   LOCATE 15, 21
   COLOR 15, 0
   PRINT SPACE$(40);
@@ -214,7 +214,7 @@ SUB BDatenAendern
 	    END IF
 	  NEXT i
 	  IF RTRIM$(temp1) = "" THEN
-	    errormsg = "Der Name des Benutzers mu√ü min. 1 Zeichen lang sein.;"
+	    errormsg = "Der Name des Benutzers mu· min. 1 Zeichen lang sein.;"
 	    ERROR 100
 	    aktiv = 1
 	  END IF
@@ -228,7 +228,7 @@ SUB BDatenAendern
 	  endflag = 1
 	ELSE
 	  IF LEN(temp2) < 6 THEN
-	    errormsg = "Das Passwort mu√ü mindestens 6 Zeichen lang sein.;"
+	    errormsg = "Das Passwort mu· mindestens 6 Zeichen lang sein.;"
 	    ERROR 100
 	    temp2 = ""
 	    aktiv = 2
@@ -245,7 +245,7 @@ SUB BDatenAendern
 	  endflag = 1
 	ELSE
 	  IF NOT temp2 = temp3 THEN
-	    errormsg = "Dei beiden eingegebenen Passw√∂rter m√ºssen gleich sein.;"
+	    errormsg = "Dei beiden eingegebenen Passwîrter mÅssen gleich sein.;"
 	    ERROR 100
 	    temp2 = ""
 	    temp3 = ""
@@ -257,7 +257,7 @@ SUB BDatenAendern
       CASE 4
 	COLOR 15, 3
 	Center 25, STRING$(80, " ")
-	Center 25, CHR$(27) + " " + CHR$(26) + " = Schaltfl√§che aktivieren, [ENTER] = best√§tigen, [TAB] = weiter"
+	Center 25, CHR$(27) + " " + CHR$(26) + " = SchaltflÑche aktivieren, [ENTER] = bestÑtigen, [TAB] = weiter"
 	abbrkey = ReadButtons%(abutton, "Ok", "Abbruch", 17, 29)
 	SELECT CASE abbrkey
 	  CASE KEYTAB%
@@ -284,7 +284,7 @@ SUB BDatenAendern
     CLOSE 1
     COLOR 15, 3
     Center 1, STRING$(80, " ")
-    Center 1, "Toxic Brain Coach 1.7√ü - " + LTRIM$(RTRIM$(benutzer(auser).username))
+    Center 1, "Toxic Brain Coach 1.7· - " + LTRIM$(RTRIM$(benutzer(auser).username))
   END IF
 END SUB
 
@@ -319,7 +319,7 @@ SUB BenutzerErfassen
   PRINT SPACE$(40);
   LOCATE 14, 21
   COLOR 15, 1
-  PRINT "Passwort (Best√§tigung):";
+  PRINT "Passwort (BestÑtigung):";
   LOCATE 15, 21
   COLOR 15, 0
   PRINT SPACE$(40);
@@ -349,7 +349,7 @@ SUB BenutzerErfassen
 	    END IF
 	  NEXT i
 	  IF RTRIM$(benutzer(user).username) = "" THEN
-	    errormsg = "Der Name des Benutzers mu√ü min. 1 Zeichen lang sein.;"
+	    errormsg = "Der Name des Benutzers mu· min. 1 Zeichen lang sein.;"
 	    ERROR 100
 	    aktiv = 1
 	  END IF
@@ -363,7 +363,7 @@ SUB BenutzerErfassen
 	  endflag = 1
 	ELSE
 	  IF LEN(temp1) < 6 THEN
-	    errormsg = "Das Passwort mu√ü mindestens 6 Zeichen lang sein.;"
+	    errormsg = "Das Passwort mu· mindestens 6 Zeichen lang sein.;"
 	    ERROR 100
 	    temp1 = ""
 	    aktiv = 2
@@ -380,7 +380,7 @@ SUB BenutzerErfassen
 	  endflag = 1
 	ELSE
 	  IF NOT temp1 = temp2 THEN
-	    errormsg = "Dei beiden eingegebenen Passw√∂rter m√ºssen gleich sein.;"
+	    errormsg = "Dei beiden eingegebenen Passwîrter mÅssen gleich sein.;"
 	    ERROR 100
 	    temp1 = ""
 	    temp2 = ""
@@ -392,7 +392,7 @@ SUB BenutzerErfassen
       CASE 4
 	COLOR 15, 3
 	Center 25, STRING$(80, " ")
-	Center 25, CHR$(27) + " " + CHR$(26) + " = Schaltfl√§che aktivieren, [ENTER] = best√§tigen, [TAB] = weiter"
+	Center 25, CHR$(27) + " " + CHR$(26) + " = SchaltflÑche aktivieren, [ENTER] = bestÑtigen, [TAB] = weiter"
 	abbrkey = ReadButtons%(abutton, "Ok", "Abbruch", 17, 29)
 	SELECT CASE abbrkey
 	  CASE KEYTAB%
@@ -430,7 +430,7 @@ SUB BenutzerErfassen
     auser = user
     COLOR 15, 3
     Center 1, STRING$(80, " ")
-    Center 1, "Toxic Brain Coach 1.7√ü - " + LTRIM$(RTRIM$(benutzer(user).username))
+    Center 1, "Toxic Brain Coach 1.7· - " + LTRIM$(RTRIM$(benutzer(user).username))
   ELSE
     user = user - 1
   END IF
@@ -449,7 +449,7 @@ SUB BenutzerLaden
   NEXT i
   COLOR 15, 3
   Center 25, STRING$(80, " ")
-  Center 25, CHR$(25) + CHR$(24) + ", [BILD" + CHR$(25) + "]/[BILD" + CHR$(24) + "], [ENDE]/[POS1] = Benutzer ausw√§hlen. [ENTER]/[TAB] = weiter"
+  Center 25, CHR$(25) + CHR$(24) + ", [BILD" + CHR$(25) + "]/[BILD" + CHR$(24) + "], [ENDE]/[POS1] = Benutzer auswÑhlen. [ENTER]/[TAB] = weiter"
   tusername = SelectFromList$(userliste$(), "Benutzer laden - Auswahl")
   IF NOT tusername = SPACE$(40) THEN
     i = 0
@@ -459,7 +459,7 @@ SUB BenutzerLaden
     SaveScreen 3
     COLOR 15, 3
     Center 25, STRING$(80, " ")
-    Center 25, "Bitte das Passwort f√ºr den Benutzer eingeben. [ENTER] = best√§tigen"
+    Center 25, "Bitte das Passwort fÅr den Benutzer eingeben. [ENTER] = bestÑtigen"
     DrawWindow 41 - INT(48 / 2), 12 - INT(7 / 2), 48, 7, 0, 3, 2, "Passwortabfrage"
     LOCATE 11, 21
     COLOR 0, 3
@@ -487,10 +487,10 @@ SUB BenutzerLaden
 	' 2006: exception needed for years, where year % 1000 = 0
 	i = i - benutzer(auser).lastlesson + GetDayNr%
       END IF
-      IF i > 5 THEN OkMsg "Sie haben seit" + STR$(i) + " Tage nicht gelernt.; Das ist viel zu selten.;Sie sollten min. alle 5 Tage √ºben;"
+      IF i > 5 THEN OkMsg "Sie haben seit" + STR$(i) + " Tage nicht gelernt.; Das ist viel zu selten.;Sie sollten min. alle 5 Tage Åben;"
       COLOR 15, 3
       Center 1, STRING$(80, " ")
-      Center 1, "Toxic Brain Coach 1.7√ü - " + LTRIM$(RTRIM$(benutzer(auser).username))
+      Center 1, "Toxic Brain Coach 1.7· - " + LTRIM$(RTRIM$(benutzer(auser).username))
     END IF
     RestoreScreen 3
   END IF
@@ -505,19 +505,19 @@ SUB Benutzerverwaltung
   DIM itemdesc(1 TO items) AS STRING, aktivitem AS INTEGER
   DIM endflag AS INTEGER
   menuitem(1) = "~N~euen Benutzer erfassen"
-  itemdesc(1) = "Stammdaten f√ºr neuen Benutzer aufnehmen"
+  itemdesc(1) = "Stammdaten fÅr neuen Benutzer aufnehmen"
   itemstate(1) = 1
   menuitem(2) = "~B~enutzer laden"
   itemdesc(2) = "Einen bereits vorhandenen Benutzer laden"
   itemstate(2) = 1
-  menuitem(3) = "Benutzer~d~aten √§ndern"
-  itemdesc(3) = "Benutzername oder Passwort √§ndern"
+  menuitem(3) = "Benutzer~d~aten Ñndern"
+  itemdesc(3) = "Benutzername oder Passwort Ñndern"
   itemstate(3) = 1
-  menuitem(4) = "Benutzer au~f~l√∂sen"
-  itemdesc(4) = "Nicht mehr ben√∂tigte Benutzer als aufgel√∂st markieren"
+  menuitem(4) = "Benutzer au~f~lîsen"
+  itemdesc(4) = "Nicht mehr benîtigte Benutzer als aufgelîst markieren"
   itemstate(4) = 1
-  menuitem(5) = "~Z~ur√ºck"
-  itemdesc(5) = "Zum Hauptmen√º zur√ºckkehren"
+  menuitem(5) = "~Z~urÅck"
+  itemdesc(5) = "Zum HauptmenÅ zurÅckkehren"
   itemstate(5) = 1
   aktivitem = 1
   DO
@@ -610,14 +610,14 @@ FUNCTION CheckFach1%
 	  IF j = 0 THEN
 	    aktiv = 2
 	  ELSE
-	    errormsg = "Die Zahl der √∂ffnenden Klammern mu√ü der der schlie√üenden entsprechen"
+	    errormsg = "Die Zahl der îffnenden Klammern mu· der der schlie·enden entsprechen"
 	    ERROR 100
 	  END IF
 	END IF
       CASE 2
 	COLOR 15, 3
 	Center 25, STRING$(80, " ")
-	Center 25, CHR$(27) + " " + CHR$(26) + " = Schaltfl√§che aktivieren, [ENTER] = best√§tigen, [TAB] = weiter"
+	Center 25, CHR$(27) + " " + CHR$(26) + " = SchaltflÑche aktivieren, [ENTER] = bestÑtigen, [TAB] = weiter"
 	abbrkey = ReadButtons%(abutton, "Weiter", "Ende", 17, 29)
 	SELECT CASE abbrkey
 	  CASE KEYTAB%
@@ -704,14 +704,14 @@ FUNCTION CheckFach2%
 	  IF j = 0 THEN
 	    aktiv = 2
 	  ELSE
-	    errormsg = "Die Zahl der √∂ffnenden Klammern mu√ü der der schlie√üenden entsprechen"
+	    errormsg = "Die Zahl der îffnenden Klammern mu· der der schlie·enden entsprechen"
 	    ERROR 100
 	  END IF
 	END IF
       CASE 2
 	COLOR 15, 3
 	Center 25, STRING$(80, " ")
-	Center 25, CHR$(27) + " " + CHR$(26) + " = Schaltfl√§che aktivieren, [ENTER] = best√§tigen, [TAB] = weiter"
+	Center 25, CHR$(27) + " " + CHR$(26) + " = SchaltflÑche aktivieren, [ENTER] = bestÑtigen, [TAB] = weiter"
 	abbrkey = ReadButtons%(abutton, "Weiter", "Ende", 17, 29)
 	SELECT CASE abbrkey
 	  CASE KEYTAB%
@@ -798,14 +798,14 @@ FUNCTION CheckFach3%
 	  IF j = 0 THEN
 	    aktiv = 2
 	  ELSE
-	    errormsg = "Die Zahl der √∂ffnenden Klammern mu√ü der der schlie√üenden entsprechen"
+	    errormsg = "Die Zahl der îffnenden Klammern mu· der der schlie·enden entsprechen"
 	    ERROR 100
 	  END IF
 	END IF
       CASE 2
 	COLOR 15, 3
 	Center 25, STRING$(80, " ")
-	Center 25, CHR$(27) + " " + CHR$(26) + " = Schaltfl√§che aktivieren, [ENTER] = best√§tigen, [TAB] = weiter"
+	Center 25, CHR$(27) + " " + CHR$(26) + " = SchaltflÑche aktivieren, [ENTER] = bestÑtigen, [TAB] = weiter"
 	abbrkey = ReadButtons%(abutton, "Weiter", "Ende", 17, 29)
 	SELECT CASE abbrkey
 	  CASE KEYTAB%
@@ -892,14 +892,14 @@ FUNCTION CheckFach4%
 	  IF j = 0 THEN
 	    aktiv = 2
 	  ELSE
-	    errormsg = "Die Zahl der √∂ffnenden Klammern mu√ü der der schlie√üenden entsprechen"
+	    errormsg = "Die Zahl der îffnenden Klammern mu· der der schlie·enden entsprechen"
 	    ERROR 100
 	  END IF
 	END IF
       CASE 2
 	COLOR 15, 3
 	Center 25, STRING$(80, " ")
-	Center 25, CHR$(27) + " " + CHR$(26) + " = Schaltfl√§che aktivieren, [ENTER] = best√§tigen, [TAB] = weiter"
+	Center 25, CHR$(27) + " " + CHR$(26) + " = SchaltflÑche aktivieren, [ENTER] = bestÑtigen, [TAB] = weiter"
 	abbrkey = ReadButtons%(abutton, "Weiter", "Ende", 17, 29)
 	SELECT CASE abbrkey
 	  CASE KEYTAB%
@@ -986,14 +986,14 @@ FUNCTION CheckFach5%
 	  IF j = 0 THEN
 	    aktiv = 2
 	  ELSE
-	    errormsg = "Die Zahl der √∂ffnenden Klammern mu√ü der der schlie√üenden entsprechen"
+	    errormsg = "Die Zahl der îffnenden Klammern mu· der der schlie·enden entsprechen"
 	    ERROR 100
 	  END IF
 	END IF
       CASE 2
 	COLOR 15, 3
 	Center 25, STRING$(80, " ")
-	Center 25, CHR$(27) + " " + CHR$(26) + " = Schaltfl√§che aktivieren, [ENTER] = best√§tigen, [TAB] = weiter"
+	Center 25, CHR$(27) + " " + CHR$(26) + " = SchaltflÑche aktivieren, [ENTER] = bestÑtigen, [TAB] = weiter"
 	abbrkey = ReadButtons%(abutton, "Weiter", "Ende", 17, 29)
 	SELECT CASE abbrkey
 	  CASE KEYTAB%
@@ -1073,7 +1073,7 @@ SUB CreateMenu (menutitle AS STRING, items AS INTEGER, menuitem() AS STRING, ite
   NEXT i
   COLOR 15, 1
   LOCATE 13 - INT((items * 2 + 3) / 2) + items * 2 + 2, 41 - INT(maxlen / 2) + 3
-  PRINT "Bitte w√§hlen Sie "; CHR$(25); CHR$(24);
+  PRINT "Bitte wÑhlen Sie "; CHR$(25); CHR$(24);
   COLOR 15, 3
   Center 25, STRING$(80, " ")
   Center 25, itemdesc(aktivitem)
@@ -1099,21 +1099,21 @@ SUB DrawWindow (X%, y%, w%, h%, fc%, bc%, ra%, title$)
   LOCATE sy, sx
   SELECT CASE ra%
     CASE 1
-      PRINT " +"; STRING$(ex - sx - 3, "-"); "+ ";
+      PRINT " ⁄"; STRING$(ex - sx - 3, "ƒ"); "ø ";
       FOR i = sy + 1 TO ey - 1
 	LOCATE i, sx
-	PRINT " |"; STRING$(ex - sx - 3, " "); "| ";
+	PRINT " ≥"; STRING$(ex - sx - 3, " "); "≥ ";
       NEXT i
       LOCATE i, sx
-      PRINT " +"; STRING$(ex - sx - 3, "-"); "+ ";
+      PRINT " ¿"; STRING$(ex - sx - 3, "ƒ"); "Ÿ ";
     CASE 2
-      PRINT " #"; STRING$(ex - sx - 3, "#"); "# ";
+      PRINT " …"; STRING$(ex - sx - 3, "Õ"); "ª ";
       FOR i = sy + 1 TO ey - 1
 	LOCATE i, sx
-	PRINT " #"; STRING$(ex - sx - 3, " "); "# ";
+	PRINT " ∫"; STRING$(ex - sx - 3, " "); "∫ ";
       NEXT i
       LOCATE i, sx
-      PRINT " #"; STRING$(ex - sx - 3, "#"); "# ";
+      PRINT " »"; STRING$(ex - sx - 3, "Õ"); "º ";
     CASE ELSE
       FOR i = sy TO ey
 	LOCATE i, sx
@@ -1345,29 +1345,29 @@ END SUB
 SUB MainMenu
   '$DYNAMIC
   DIM menutitle AS STRING, items AS INTEGER
-  menutitle = "Hauptmen√º"
+  menutitle = "HauptmenÅ"
   items = 6
   DIM menuitem(1 TO items) AS STRING, itemstate(1 TO items) AS INTEGER
   DIM itemdesc(1 TO items) AS STRING, aktivitem AS INTEGER
   DIM endflag AS INTEGER
   DIM i AS INTEGER, gkarten AS INTEGER
   menuitem(1) = "~B~enutzererwaltung..."
-  itemdesc(1) = "Neue Benutzer erfassen, vorhandene laden und aufl√∂sen"
+  itemdesc(1) = "Neue Benutzer erfassen, vorhandene laden und auflîsen"
   itemstate(1) = 1
   menuitem(2) = "~V~okabeln..."
-  itemdesc(2) = "Vokabeln eingeben, anzeigen/√§ndern und abfragen"
+  itemdesc(2) = "Vokabeln eingeben, anzeigen/Ñndern und abfragen"
   itemstate(2) = 1
   menuitem(3) = "~S~tatistik"
-  itemdesc(3) = "Leistungsdiagramm und √§hnliches"
+  itemdesc(3) = "Leistungsdiagramm und Ñhnliches"
   itemstate(3) = 1
   menuitem(4) = "S~p~iel"
-  itemdesc(4) = CHR$(34) + "Galgenm√§nnchen" + CHR$(34) + " spielen"
+  itemdesc(4) = CHR$(34) + "GalgenmÑnnchen" + CHR$(34) + " spielen"
   itemstate(4) = 1
   menuitem(5) = "~O~ptionen..."
-  itemdesc(5) = "Sound- und Farbeinstellungen √§ndern"
+  itemdesc(5) = "Sound- und Farbeinstellungen Ñndern"
   itemstate(5) = 1
   menuitem(6) = "Programm~e~nde"
-  itemdesc(6) = "Toxic Brain Coach 1.7√ü beenden"
+  itemdesc(6) = "Toxic Brain Coach 1.7· beenden"
   itemstate(6) = 1
   aktivitem = 1
   DO
@@ -1392,7 +1392,7 @@ SUB MainMenu
 	RestoreScreen 1
 	COLOR 15, 3
 	Center 1, STRING$(80, " ")
-	Center 1, "Toxic Brain Coach 1.7√ü - " + LTRIM$(RTRIM$(benutzer(auser).username))
+	Center 1, "Toxic Brain Coach 1.7· - " + LTRIM$(RTRIM$(benutzer(auser).username))
       CASE 4
 	SaveScreen 1
 	Spiel
@@ -1431,10 +1431,10 @@ SUB OkMsg (msg$)
     msg$ = MID$(msg$, INSTR(msg$, ";") + 1)
   NEXT i
   COLOR 15, 0
-  Center bsl + zeilen + 3, "   ok   "
+  Center bsl + zeilen + 3, "    OK    "
   COLOR 8, 3
-  PRINT "!";
-  Center bsl + zeilen + 4, "  " + STRING$(10, "!")
+  PRINT "‹";
+  Center bsl + zeilen + 4, "  " + STRING$(10, "ﬂ")
   Warte
 END SUB
 
@@ -1475,11 +1475,11 @@ FUNCTION ReadButtons% (abutton AS INTEGER, name1$, name2$, row AS INTEGER, col A
 	PRINT SPACE$(5 - INT(LEN(name1$) / 2)); name1$;
 	PRINT SPACE$(5 + INT(LEN(name1$) / 2) - LEN(name1$));
 	COLOR 0, 1
-	PRINT "!";
+	PRINT "‹";
 	PRINT SPACE$(6 - INT(LEN(name2$) / 2)); name2$;
 	PRINT SPACE$(6 + INT(LEN(name2$) / 2) - LEN(name2$));
 	LOCATE row + 1, col + 1
-	PRINT STRING$(10, "!"); STRING$(12, " ");
+	PRINT STRING$(10, "ﬂ"); STRING$(12, " ");
       CASE 2
 	LOCATE row, col
 	COLOR 0, 1
@@ -1489,9 +1489,9 @@ FUNCTION ReadButtons% (abutton AS INTEGER, name1$, name2$, row AS INTEGER, col A
 	PRINT SPACE$(5 - INT(LEN(name2$) / 2)); name2$;
 	PRINT SPACE$(5 + INT(LEN(name2$) / 2) - LEN(name2$));
 	COLOR 0, 1
-	PRINT "!";
+	PRINT "‹";
 	LOCATE row + 1, col + 1
-	PRINT STRING$(12, " "); STRING$(10, "!");
+	PRINT STRING$(12, " "); STRING$(10, "ﬂ");
       CASE ELSE
     END SELECT
     SELECT CASE GetKey%
@@ -1821,7 +1821,7 @@ FUNCTION SelectFromList$ (liste$(), title$)
       CASE 2
 	COLOR 15, 3
 	Center 25, STRING$(80, " ")
-	Center 25, CHR$(27) + " " + CHR$(26) + " = Schaltfl√§che aktivieren, [ENTER] = best√§tigen, [TAB] = weiter"
+	Center 25, CHR$(27) + " " + CHR$(26) + " = SchaltflÑche aktivieren, [ENTER] = bestÑtigen, [TAB] = weiter"
 	abbrkey = ReadButtons%(abutton, "Ok", "Abbruch", 17, 29)
 	SELECT CASE abbrkey
 	  CASE KEYTAB%
@@ -1932,7 +1932,7 @@ SUB ShowResult (antwort$, result%)
 END SUB
 
 SUB Spiel
-  DrawWindow 41 - INT(72 / 2), 13 - INT(20 / 2), 72, 20, 15, 1, 1, CHR$(34) + "Galgenm√§nnchen" + CHR$(34)
+  DrawWindow 41 - INT(72 / 2), 13 - INT(20 / 2), 72, 20, 15, 1, 1, CHR$(34) + "GalgenmÑnnchen" + CHR$(34)
   Warte
 END SUB
 
@@ -1943,14 +1943,14 @@ FUNCTION StartMenu%
   DIM menuitem(1 TO items) AS STRING, itemstate(1 TO items) AS INTEGER
   DIM itemdesc(1 TO items) AS STRING, aktivitem AS INTEGER
   DIM endflag AS INTEGER
-  menuitem(1) = "~N~ euen Benutzer erfassen"
-  itemdesc(1) = "Stammdaten f√ºr neuen Benutzer aufnehmen"
+  menuitem(1) = "~N~euen Benutzer erfassen"
+  itemdesc(1) = "Stammdaten fÅr neuen Benutzer aufnehmen"
   itemstate(1) = 1
   menuitem(2) = "~B~enutzer laden"
   itemdesc(2) = "Einen bereits vorhandenen Benutzer laden"
   IF user > 0 THEN itemstate(2) = 1
   menuitem(3) = "Programm~e~nde"
-  itemdesc(3) = "Toxic Brain Coach 1.7√ü beenden"
+  itemdesc(3) = "Toxic Brain Coach 1.7 beenden"
   itemstate(3) = 1
   aktivitem = 1
   SaveScreen 1
@@ -2057,8 +2057,8 @@ SUB Vokabelliste
   CLOSE 1
   COLOR 15, 3
   Center 25, STRING$(80, " ")
-  Center 25, CHR$(25) + CHR$(24) + ", [BILD" + CHR$(25) + "]/[BILD" + CHR$(24) + "], [ENDE]/[POS1] = Vokabel ausw√§hlen. [ENTER]/[TAB] = weiter"
-  temp = SelectFromList$(userliste$(), "Vokabeln anzeigen/√§ndern - Auswahl")
+  Center 25, CHR$(25) + CHR$(24) + ", [BILD" + CHR$(25) + "]/[BILD" + CHR$(24) + "], [ENDE]/[POS1] = Vokabel auswÑhlen. [ENTER]/[TAB] = weiter"
+  temp = SelectFromList$(userliste$(), "Vokabeln anzeigen/Ñndern - Auswahl")
 END SUB
 
 SUB Vokabeln
@@ -2069,19 +2069,19 @@ SUB Vokabeln
   DIM itemdesc(1 TO items) AS STRING, aktivitem AS INTEGER
   DIM endflag AS INTEGER
   menuitem(1) = "~N~eue Vokabeln eingeben"
-  itemdesc(1) = "Neue Vokabeln f√ºr diesen Benutzer eingeben"
+  itemdesc(1) = "Neue Vokabeln fÅr diesen Benutzer eingeben"
   itemstate(1) = 1
   menuitem(2) = "~V~okabel abfragen"
-  itemdesc(2) = "Neue Vokabeln aus der Warteliste √ºbernehmen und Abfrage starten"
+  itemdesc(2) = "Neue Vokabeln aus der Warteliste Åbernehmen und Abfrage starten"
   itemstate(2) = 1
-  menuitem(3) = "Vokabeln ~a~nzeigen/√§ndern"
-  itemdesc(3) = "Alphabetische Vokabelliste anzeigen - ggf. Vokabeln daraus √§ndern"
+  menuitem(3) = "Vokabeln ~a~nzeigen/Ñndern"
+  itemdesc(3) = "Alphabetische Vokabelliste anzeigen - ggf. Vokabeln daraus Ñndern"
   itemstate(3) = 1
   menuitem(4) = "Vokabelpaket ~i~nstallieren"
   itemdesc(4) = "Installieren eines Vokabelpakets von Toxic Brain (siehe BESTELL.TXT)"
   itemstate(4) = 1
-  menuitem(5) = "~Z~ur√ºck"
-  itemdesc(5) = "Zum Hauptmen√º zur√ºckkehren"
+  menuitem(5) = "~Z~urÅck"
+  itemdesc(5) = "Zum HauptmenÅ zurÅckkehren"
   itemstate(5) = 1
   aktivitem = 1
   DO
@@ -2201,7 +2201,7 @@ SUB VokabelnEingeben
 	    IF j = 0 THEN
 	      aktiv = 2
 	    ELSE
-	      errormsg = "Die Zahl der √∂ffnenden Klammern mu√ü der Zahl;der schlie√üenden Klammern entsprechen.;"
+	      errormsg = "Die Zahl der îffnenden Klammern mu· der Zahl;der schlie·enden Klammern entsprechen.;"
 	      ERROR 100
 	    END IF
 	  END IF
@@ -2214,7 +2214,7 @@ SUB VokabelnEingeben
 	CASE 3
 	  COLOR 15, 3
 	  Center 25, STRING$(80, " ")
-	  Center 25, CHR$(27) + " " + CHR$(26) + " = Schaltfl√§che aktivieren, [ENTER] =	best√§tigen, [TAB] = weiter"
+	  Center 25, CHR$(27) + " " + CHR$(26) + " = SchaltflÑche aktivieren, [ENTER] =	bestÑtigen, [TAB] = weiter"
 	  abbrkey = ReadButtons%(abutton, "Weiter", "Ende", 16, 29)
 	  SELECT CASE abbrkey
 	    CASE KEYTAB%
